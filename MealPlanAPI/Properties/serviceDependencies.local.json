@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/kaine-db/databases/MEALPLAN",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:MealPlan",
+      "dynamicId": null
+    },
+    "identityapp1": {
+      "secretStore": "LocalSecretsFile",
+      "type": "identityapp.secretStore",
+      "connectionId": "AzureAD:ClientSecret",
+      "dynamicId": null
+    },
+    "storage1": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/kainestorage",
+      "type": "storage.azure",
+      "connectionId": "\"DefaultEndpointsProtocol=https;AccountName=kainestorage;AccountKey=yrkARpMyiRB3FnujB8HDwmyYK+eUOgkErutfEGjUObELZJUeJXVek5gadeRxy3DnTevunRhQp15L+AStYg2YNA==;EndpointSuffix=core.windows.net\"",
+      "dynamicId": null
+    }
+  }
+}
