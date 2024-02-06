@@ -2,22 +2,8 @@
   "dependencies": {
     "mssql1": {
       "secretStore": "LocalSecretsFile",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/kaine-db/databases/MEALPLAN",
-      "type": "mssql.azure",
+      "type": "mssql.local",
       "connectionId": "ConnectionStrings:MealPlan",
-      "dynamicId": null
-    },
-    "identityapp1": {
-      "secretStore": "LocalSecretsFile",
-      "type": "identityapp.secretStore",
-      "connectionId": "AzureAD:ClientSecret",
-      "dynamicId": null
-    },
-    "storage1": {
-      "secretStore": "LocalSecretsFile",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/kainestorage",
-      "type": "storage.azure",
-      "connectionId": "Storage:ConnectionString",
       "dynamicId": null
     }
   }

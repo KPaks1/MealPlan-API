@@ -5,17 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MealPlanAPI.Model;
+using MealPlanAPI.Data;
+using MealPlanAPI.Data.Model;
 
 namespace MealPlanAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MealsController : ControllerBase
+    public class MealController : ControllerBase
     {
         private readonly DatabaseContext _context;
 
-        public MealsController(DatabaseContext context)
+        public MealController(DatabaseContext context)
         {
             _context = context;
         }
@@ -45,6 +46,17 @@ namespace MealPlanAPI.Controllers
             {
                 return NotFound();
             }
+
+            return meal;
+        }
+        
+        // GET: api/Meals/Ingredients/5
+        [HttpGet("Ingredients/{id}")]
+        public async Task<ActionResult<Meal>> GetMealIngredients(int id)
+        {
+            var meal = await GetMeal(id);
+
+            var mealIngredients = await _context.MealIngredients.ToListAsync();
 
             return meal;
         }
@@ -90,6 +102,7 @@ namespace MealPlanAPI.Controllers
               return Problem("Entity set 'DatabaseContext.Meals'  is null.");
           }
             _context.Meals.Add(meal);
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetMeal", new { id = meal.MealId }, meal);
@@ -104,12 +117,14 @@ namespace MealPlanAPI.Controllers
                 return NotFound();
             }
             var meal = await _context.Meals.FindAsync(id);
+
             if (meal == null)
             {
                 return NotFound();
             }
 
             _context.Meals.Remove(meal);
+
             await _context.SaveChangesAsync();
 
             return NoContent();

@@ -4,16 +4,6 @@
       "type": "mssql",
       "connectionId": "ConnectionStrings:MealPlan",
       "dynamicId": null
-    },
-    "identityapp1": {
-      "type": "identityapp",
-      "connectionId": "AzureAD:ClientSecret",
-      "dynamicId": null
-    },
-    "storage1": {
-      "type": "storage",
-      "connectionId": "Storage:ConnectionString",
-      "dynamicId": null
     }
   }
 }

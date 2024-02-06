@@ -4,8 +4,8 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Azure;
 using Microsoft.Identity.Web;
-using MealPlanAPI.Model;
-using MealPlanAPI.Controllers;
+using MealPlanAPI.Data.Model;
+using MealPlanAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
