@@ -1,17 +1,17 @@
-﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Azure;
 using Microsoft.Identity.Web;
-using MealPlanAPI.Data;
-using MealPlanAPI.Data.Model;
+using MealPlanApp.Server.Data.Model;
+using MealPlanApp.Server.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Create connectionstring using secrets
 var conStrBuilder = new SqlConnectionStringBuilder(
-    builder.Configuration.GetConnectionString("MealPlan"));
+    builder.Configuration.GetConnectionString("MealPlanApp"));
 conStrBuilder.Password = builder.Configuration["Dbpw"];
 var connection = conStrBuilder.ConnectionString;
 
@@ -50,5 +50,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+app.MapFallbackToFile("/index.html");
 
 app.Run();
