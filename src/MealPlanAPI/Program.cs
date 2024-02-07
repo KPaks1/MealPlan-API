@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using MealPlanAPI.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Azure;
 using Microsoft.Identity.Web;
-using MealPlanAPI.Data;
-using MealPlanAPI.Data.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 

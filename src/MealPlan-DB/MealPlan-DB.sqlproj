@@ -6,7 +6,7 @@
     <Name>MealPlan_DB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{64f94435-0b0a-45f7-96af-9e33b2479f7f}</ProjectGuid>
+    <ProjectGuid>{f0743aff-4d95-482d-ba95-65bbd735f8a3}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>

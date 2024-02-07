@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using MealPlan.ServiceLibrary.Entities;
+using MealPlanAPI.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MealPlanAPI.Data;
-using MealPlanAPI.Data.Model;
+using NuGet.Protocol;
+using System.Text.Json.Serialization;
 
 namespace IngredientPlanAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Serializable]
     public class IngredientController : ControllerBase
     {
         private readonly DatabaseContext _context;

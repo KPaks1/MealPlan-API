@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-
-namespace MealPlanAPI.Data.Model
+﻿namespace MealPlan.ServiceLibrary.Entities
 {
     public partial class Meal
     {

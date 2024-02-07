@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using MealPlanAPI.Data;
+using MealPlan.ServiceLibrary.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MealPlanAPI.Data;
-using MealPlanAPI.Data.Model;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace MealPlanAPI.Controllers
 {
@@ -49,16 +45,39 @@ namespace MealPlanAPI.Controllers
 
             return meal;
         }
-        
+
         // GET: api/Meals/Ingredients/5
         [HttpGet("Ingredients/{id}")]
-        public async Task<ActionResult<Meal>> GetMealIngredients(int id)
+        public async Task<ActionResult<IEnumerable<Ingredient>>> GetMealIngredients(int id)
         {
             var meal = await GetMeal(id);
 
-            var mealIngredients = await _context.MealIngredients.ToListAsync();
+            var mealIngredients = await _context.MealIngredients.Where(i=>i.MealId == id).Select(i=>i.IngredientId).ToListAsync();
 
-            return meal;
+            if (mealIngredients == null || !mealIngredients.Any())
+            {
+                return NotFound();
+            }
+
+            IList<Ingredient> ingredients = new List<Ingredient>();
+            Ingredient ingredient = null;
+
+            foreach (int ingredientId in mealIngredients)
+            {
+                ingredient = await _context.Ingredients.FindAsync(ingredientId);
+
+                if (ingredient != null)
+                {
+                    ingredients.Add(ingredient);
+                }   
+            }
+
+            if (ingredients.Any())
+            {
+                return ingredients.ToList();
+            }
+            return NotFound();
+
         }
 
         // PUT: api/Meals/5

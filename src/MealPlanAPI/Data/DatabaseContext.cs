@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using MealPlanAPI.Data.Model;
-using Microsoft.Data.SqlClient;
+﻿using MealPlan.ServiceLibrary.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MealPlanAPI.Data;
 public partial class DatabaseContext : DbContext
@@ -19,7 +15,6 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<Meal> Meals { get; set; } = null!;
     public virtual DbSet<Ingredient> Ingredients { get; set; } = null!;
-
     public virtual DbSet<MealIngredient> MealIngredients { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -111,6 +106,8 @@ public partial class DatabaseContext : DbContext
         // MealIngredient 
         modelBuilder.Entity<MealIngredient>(entity =>
         {
+            entity.HasNoKey();
+
             entity.Property(e => e.IngredientId)
                 .HasColumnName("IngredientTypeId");
 
